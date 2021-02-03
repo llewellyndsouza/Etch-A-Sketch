@@ -37,6 +37,7 @@
 
     //Add boxes dynamically
     function generate(size) {
+        clear();
         let container = document.getElementsByClassName('container')[0];
         for (let i = 0; i < size; i++) {
             let parent = document.createElement('div');
@@ -62,6 +63,12 @@
                 else e.target.style.backgroundColor = 'white';
             });
         }
+    }
+
+    //Clear the container
+    function clear() {
+        let container = document.getElementsByClassName('container')[0];
+        while(container.firstChild) container.removeChild(container.firstChild);
     }
 
 </script>
