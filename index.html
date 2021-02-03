@@ -3,12 +3,10 @@
 
 <head>
     <title>Etch-A-Sketch project</title>
+
     <style>
         .container {
             background-color: white;
-        }
-
-        #flexColumn {
             display: flex;
             flex-direction: column;
         }
@@ -25,48 +23,47 @@
             background-color: grey;
         }
     </style>
+
 </head>
 
-<body class='container'>
-    <div id='flexColumn'>
-        <div id='flexRow'>
-            <div class='box'></div>
-            <div class='box'></div>
-            <div class='box'></div>
-            <div class='box'></div>
-        </div>
-        <div id='flexRow'>
-            <div class='box'></div>
-            <div class='box'></div>
-            <div class='box'></div>
-            <div class='box'></div>
-        </div>
-        <div id='flexRow'>
-            <div class='box'></div>
-            <div class='box'></div>
-            <div class='box'></div>
-            <div class='box'></div>
-        </div>
-        <div id='flexRow'>
-            <div class='box'></div>
-            <div class='box'></div>
-            <div class='box'></div>
-            <div class='box'></div>
-        </div>
-    </div>
-</body>
+<div>
+    <button onclick="generate(4)">4</button>
+    <button onclick="generate(16)">16</button>
+</div>
+<div class='container'>
+</div>
 
 <script>
 
+    //Add boxes dynamically
+    function generate(size) {
+        let container = document.getElementsByClassName('container')[0];
+        for (let i = 0; i < size; i++) {
+            let parent = document.createElement('div');
+            parent.setAttribute('id', 'flexRow');
+            container.appendChild(parent);
+            for (let j = 0; j < size; j++) {
+                let child = document.createElement('div');
+                child.setAttribute('class', 'box');
+                parent.append(child);
+            }
+        }
+        addListeners();
+    }
+
+
     // Add event listener to the box
     // Change the colour when the mouse hovers above a box
-    let area = document.getElementsByClassName('box');
-    for (let i=0; i<area.length; i++) {
-        area[i].addEventListener('mouseover',(e) => {
-            if(e.target.style.backgroundColor != 'pink') e.target.style.backgroundColor = 'pink';
-            else e.target.style.backgroundColor = 'white';
-        });
+    function addListeners() {
+        let area = document.getElementsByClassName('box');
+        for (let i = 0; i < area.length; i++) {
+            area[i].addEventListener('mouseover', (e) => {
+                if (e.target.style.backgroundColor != 'pink') e.target.style.backgroundColor = 'pink';
+                else e.target.style.backgroundColor = 'white';
+            });
+        }
     }
+
 </script>
 
 </html>
