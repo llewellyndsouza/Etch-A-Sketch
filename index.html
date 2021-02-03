@@ -5,25 +5,24 @@
     <title>Etch-A-Sketch project</title>
     <style>
         .container {
-            background: lightpink;
+            background-color: white;
         }
 
         #flexColumn {
-            background-color: lightsalmon;
             display: flex;
             flex-direction: column;
         }
 
         #flexRow {
-            background-color: lime;
             display: flex;
             flex-direction: row;
         }
 
-        #flexRow > div {
+        .box {
             width: 40px;
             height: 40px;
             border: solid 1px #404040;
+            background-color: grey;
         }
     </style>
 </head>
@@ -31,18 +30,43 @@
 <body class='container'>
     <div id='flexColumn'>
         <div id='flexRow'>
-            <div></div>
-            <div></div>
+            <div class='box'></div>
+            <div class='box'></div>
+            <div class='box'></div>
+            <div class='box'></div>
         </div>
         <div id='flexRow'>
-            <div></div>
-            <div></div>
+            <div class='box'></div>
+            <div class='box'></div>
+            <div class='box'></div>
+            <div class='box'></div>
+        </div>
+        <div id='flexRow'>
+            <div class='box'></div>
+            <div class='box'></div>
+            <div class='box'></div>
+            <div class='box'></div>
+        </div>
+        <div id='flexRow'>
+            <div class='box'></div>
+            <div class='box'></div>
+            <div class='box'></div>
+            <div class='box'></div>
         </div>
     </div>
 </body>
 
 <script>
 
+    // Add event listener to the box
+    // Change the colour when the mouse hovers above a box
+    let area = document.getElementsByClassName('box');
+    for (let i=0; i<area.length; i++) {
+        area[i].addEventListener('mouseover',(e) => {
+            if(e.target.style.backgroundColor != 'pink') e.target.style.backgroundColor = 'pink';
+            else e.target.style.backgroundColor = 'white';
+        });
+    }
 </script>
 
 </html>
