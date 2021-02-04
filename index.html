@@ -9,6 +9,9 @@
             background-color: white;
             display: flex;
             flex-direction: column;
+            align-items: center;
+            margin-left: 25%;
+            margin-right: 25%;
         }
 
         #flexRow {
@@ -17,10 +20,9 @@
         }
 
         .box {
-            width: 40px;
-            height: 40px;
-            border: solid 1px #404040;
             background-color: grey;
+            width: var(--sideLength);
+            height: var(--sideLength);
         }
     </style>
 
@@ -38,6 +40,7 @@
     //Add boxes dynamically
     function generate(size) {
         clear();
+        setSideLength(size);
         let container = document.getElementsByClassName('container')[0];
         for (let i = 0; i < size; i++) {
             let parent = document.createElement('div');
@@ -63,6 +66,16 @@
                 else e.target.style.backgroundColor = 'white';
             });
         }
+    }
+
+    //Sets the sideLength variable
+    function setSideLength(gridSize) {
+        let windowHeight = window.frames.innerHeight;
+        let windowWidth = window.frames.innerWidth;
+        let length = '20px';
+        if(windowHeight<windowWidth) length = windowHeight/gridSize;
+        else length = windowWidth/gridSize;
+        document.documentElement.style.setProperty('--sideLength',length+'px');
     }
 
     //Clear the container
