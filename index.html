@@ -6,16 +6,16 @@
     <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 
-<div>
-    <button onclick="generate(4)">4</button>
-    <button onclick="generate(16)">16</button>
+<div id='topbar'>
+    <button onclick="generate()">Generate new grid</button>
 </div>
 <div class='container'>
 </div>
 
 <script>
     //Add boxes dynamically
-    function generate(size) {
+    function generate() {
+        let size = parseInt(prompt("Enter the side size of the grid:", '16'));
         clearContainer();
         setSideLength(size);
         let container = document.getElementsByClassName('container')[0];
@@ -34,11 +34,11 @@
 
 
     // Add event listener to the box
-    // Change the colour when the mouse hovers above a box
+    // Change the colour when the mouse hovers above a container element/box
     function addListeners() {
-        let area = document.getElementsByClassName('box');
-        for (let i = 0; i < area.length; i++) {
-            area[i].addEventListener('mouseover', (e) => {
+        let contanerElements = document.getElementsByClassName('box');
+        for (let i = 0; i < contanerElements.length; i++) {
+            contanerElements[i].addEventListener('mouseover', (e) => {
                 if (e.target.style.backgroundColor != 'pink') e.target.style.backgroundColor = 'pink';
                 else e.target.style.backgroundColor = 'white';
             });
@@ -47,8 +47,8 @@
 
     //Sets the sideLength variable
     function setSideLength(gridSize) {
-        let windowHeight = window.frames.innerHeight;
-        let windowWidth = window.frames.innerWidth;
+        let windowHeight = window.frames.innerHeight - 4;
+        let windowWidth = window.frames.innerWidth - 4;
         let length = '20px';
         if (windowHeight < windowWidth) length = windowHeight / gridSize;
         else length = windowWidth / gridSize;
