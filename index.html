@@ -3,29 +3,7 @@
 
 <head>
     <title>Etch-A-Sketch project</title>
-
-    <style>
-        .container {
-            background-color: white;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-left: 25%;
-            margin-right: 25%;
-        }
-
-        #flexRow {
-            display: flex;
-            flex-direction: row;
-        }
-
-        .box {
-            background-color: grey;
-            width: var(--sideLength);
-            height: var(--sideLength);
-        }
-    </style>
-
+    <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
 
 <div>
@@ -36,10 +14,9 @@
 </div>
 
 <script>
-
     //Add boxes dynamically
     function generate(size) {
-        clear();
+        clearContainer();
         setSideLength(size);
         let container = document.getElementsByClassName('container')[0];
         for (let i = 0; i < size; i++) {
@@ -73,17 +50,16 @@
         let windowHeight = window.frames.innerHeight;
         let windowWidth = window.frames.innerWidth;
         let length = '20px';
-        if(windowHeight<windowWidth) length = windowHeight/gridSize;
-        else length = windowWidth/gridSize;
-        document.documentElement.style.setProperty('--sideLength',length+'px');
+        if (windowHeight < windowWidth) length = windowHeight / gridSize;
+        else length = windowWidth / gridSize;
+        document.documentElement.style.setProperty('--sideLength', length + 'px');
     }
 
     //Clear the container
-    function clear() {
+    function clearContainer() {
         let container = document.getElementsByClassName('container')[0];
-        while(container.firstChild) container.removeChild(container.firstChild);
+        while (container.firstChild) container.removeChild(container.firstChild);
     }
-
 </script>
 
 </html>
